@@ -33,10 +33,20 @@ print('{:<30}'.format('Сеть'), '{:<30}'.format('Маска'), '{:<30}'.forma
 for i in ipplan:
     print('{:<30}'.format(i.get('net')), '{:<30}'.format(i.get('mask')), '{:<30}'.format(i.get('gw')))
 
+
 wb = openpyxl.Workbook()
 ws = wb.active
 ws.title = 'IP Plan'
+ws.cell(1, 1, 'Сеть').style = openpyxl.styles.NamedStyle = 'Headline 2'
+ws.cell(1, 2, 'Маска').style = openpyxl.styles.NamedStyle = 'Headline 2'
+ws.cell(1, 3, 'Шлюз').style = openpyxl.styles.NamedStyle = 'Headline 2'
+ws.column_dimensions['A'].width = 20
+ws.column_dimensions['B'].width = 20
+ws.column_dimensions['C'].width = 20
 
-
-
-
+for i in ipplan:
+    a = 1
+    for y in i:
+        ws.cell(ipplan.index(i) + 2, a, i[y])
+        a = a + 1
+wb.save('C:\\Users\\ve.gusarin\\PycharmProjects\\p4ne\\HomeWork\\ipplan_veg.xlsx')
