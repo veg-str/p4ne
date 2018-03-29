@@ -1,7 +1,4 @@
-import ipaddress
-import re
-import os
-import pprint
+import ipaddress, re, os
 
 
 def classify(s):
